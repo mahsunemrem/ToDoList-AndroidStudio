@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.todolistapp.Adapter.TagAdapter;
 import com.example.todolistapp.Adapter.ToDoAdapter;
@@ -32,7 +33,9 @@ public class ToDoActivity extends AppCompatActivity {
     private ToDoAdapter todoAdapter;
     private FloatingActionButton floatBottomAddTodo;
     private int TagId;
+    private String TagName;
     private ToDoManager toDoManager;
+    private TextView textViewTagName;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,10 @@ public class ToDoActivity extends AppCompatActivity {
         todos = new ArrayList<>();
 
          TagId=getIntent().getIntExtra( "id",0 );
+         TagName=getIntent().getStringExtra( "tagName" );
+        textViewTagName=findViewById( R.id.textView_tagNameTodo );
+        textViewTagName.setText( TagName.toString() );
+
         if(toDoManager.getToDosWithTagId( TagId )!=null){
             todos =(ArrayList<ToDo>) toDoManager.getToDosWithTagId( TagId );
         }
@@ -75,7 +82,7 @@ public class ToDoActivity extends AppCompatActivity {
 
 
                 MaterialAlertDialogBuilder materialAlertDialogBuilder = new MaterialAlertDialogBuilder(ToDoActivity.this);
-                materialAlertDialogBuilder.setTitle("Etiket Başlığı");
+                materialAlertDialogBuilder.setTitle("Aktivite");
 
                 materialAlertDialogBuilder.setBackground(getResources().getDrawable(R.drawable.alertdialog_bg,null));
 
@@ -84,6 +91,8 @@ public class ToDoActivity extends AppCompatActivity {
                 LayoutInflater inflater = ToDoActivity.this.getLayoutInflater();
                 final View view = inflater.inflate(R.layout.alertview_addtodo,null);
                 materialAlertDialogBuilder.setView(view);
+                EditText tagName=view.findViewById(R.id.editText_todoName );
+                tagName.setHint( "Aktivite Adı" );
                 materialAlertDialogBuilder.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -99,7 +108,7 @@ public class ToDoActivity extends AppCompatActivity {
                             toDoManager.Add( new ToDo( 0,todoName.getText().toString() ,false,TagId));
 
                         }
-                        todos=(ArrayList<ToDo>) toDoManager.GetList();
+                        todos=(ArrayList<ToDo>) toDoManager.getToDosWithTagId( TagId );
                         todoAdapter = new ToDoAdapter( getApplicationContext(),todos );
                         todoAdapter.notifyDataSetChanged();
                         rvTodo.setAdapter(todoAdapter);

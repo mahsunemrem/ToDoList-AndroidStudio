@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.todolistapp.Activity.TagActivity;
+import com.example.todolistapp.Activity.ToDoActivity;
+import com.j256.ormlite.stmt.query.In;
 
 import java.util.Timer;
 
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     private Runnable mUpdateTimeTask = new Runnable() {
         public void run() {
 
+            Intent intent=new Intent(getApplicationContext(), ToDoActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(new Intent(MainActivity.this, TagActivity.class));
 
             finish();

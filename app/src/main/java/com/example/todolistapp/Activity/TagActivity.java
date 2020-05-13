@@ -110,7 +110,6 @@ public class TagActivity extends AppCompatActivity {
                         }
                         tags=(ArrayList<Tag>) tagManager.GetList();
                         tagAdapter = new TagAdapter( getApplicationContext(),tags );
-                        tagAdapter.notifyDataSetChanged();
                         rvTag.setAdapter(tagAdapter);
 
 

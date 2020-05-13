@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,10 +25,13 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoDesignHand
     private Context mContext;
     private ArrayList<ToDo> ToDos;
 
+
+    ToDoManager toDoManager;
     public ToDoAdapter(Context mContext, ArrayList<ToDo> toDos) {
         this.mContext = mContext;
         this.ToDos = toDos;
 
+        toDoManager=new ToDoManager(  mContext);
     }
 
     @NonNull
@@ -41,11 +45,24 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoDesignHand
     @Override
     public void onBindViewHolder(@NonNull final ToDoAdapter.ToDoDesignHandler holder, int position) {
 
-         ToDo toDo = ToDos.get(position);
+         final ToDo toDo = ToDos.get(position);
 
         holder.todoName.setText(toDo.getTodoName());
 
         holder.isDone.setChecked(toDo.isDone());
+
+
+        holder.isDone.setOnCheckedChangeListener( new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                    toDo.setDone( isChecked );
+                    toDoManager.Update( toDo );
+
+                ToDos=(ArrayList<ToDo>) toDoManager.getToDosWithTagId( toDo.getTagId() );
+                notifyDataSetChanged();
+            }
+        } );
 
 
     }
