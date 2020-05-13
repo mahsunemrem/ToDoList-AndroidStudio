@@ -16,9 +16,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.todolistapp.Adapter.TagAdapter;
+import com.example.todolistapp.Business.TagManager;
+import com.example.todolistapp.DataAccess.TagDal;
 import com.example.todolistapp.Entities.Tag;
 import com.example.todolistapp.Entities.ToDo;
 import com.example.todolistapp.MainActivity;
@@ -35,21 +38,21 @@ public class TagActivity extends AppCompatActivity {
     private ArrayList<Tag> tags ;
     private TagAdapter tagAdapter;
     private FloatingActionButton floatBottomAddTag;
+
+
+    private TagManager tagManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tag);
 
 
+
          tags = new ArrayList<>();
+         tagManager=new TagManager(this);
+         tags=(ArrayList<Tag>) tagManager.GetList();
 
-         Tag t1 = new Tag(0,"#Alışveriş");
-         Tag t2 = new Tag(1,"#Proje");
-         Tag t3 = new Tag(2,"#İş");
 
-         tags.add(t1);
-         tags.add(t2);
-         tags.add(t3);
 
         rvTag=findViewById(R.id.rv_tag);
 
@@ -86,10 +89,13 @@ public class TagActivity extends AppCompatActivity {
 
                 materialAlertDialogBuilder.setIcon(R.drawable.pencil);
 
-                materialAlertDialogBuilder.setView(R.layout.alertview_addtag);
+                LayoutInflater inflater = TagActivity.this.getLayoutInflater();
+                final View view = inflater.inflate(R.layout.alertview_addtag,null);
+                materialAlertDialogBuilder.setView(view);
                 materialAlertDialogBuilder.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
 
                     }
                 });
@@ -97,6 +103,16 @@ public class TagActivity extends AppCompatActivity {
                 materialAlertDialogBuilder.setPositiveButton("Oluştur", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        EditText tagName=view.findViewById(R.id.editText_tagName );
+                        if (tagName.getText().toString()!=""){
+                            tagManager.Add( new Tag( 0,tagName.getText().toString() ));
+
+                        }
+                        tags=(ArrayList<Tag>) tagManager.GetList();
+                        tagAdapter = new TagAdapter( getApplicationContext(),tags );
+                        tagAdapter.notifyDataSetChanged();
+                        rvTag.setAdapter(tagAdapter);
+
 
                     }
                 });

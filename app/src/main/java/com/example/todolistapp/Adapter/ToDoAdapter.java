@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todolistapp.Activity.ToDoActivity;
+import com.example.todolistapp.Business.ToDoManager;
 import com.example.todolistapp.Entities.Tag;
 import com.example.todolistapp.Entities.ToDo;
 import com.example.todolistapp.R;
@@ -26,6 +27,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoDesignHand
     public ToDoAdapter(Context mContext, ArrayList<ToDo> toDos) {
         this.mContext = mContext;
         this.ToDos = toDos;
+
     }
 
     @NonNull

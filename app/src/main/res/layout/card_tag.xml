@@ -10,7 +10,7 @@
         android:id="@+id/cardView_tag"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardBackgroundColor="@color/colorTag">
+        app:cardBackgroundColor="@color/colorWhite">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -34,8 +34,8 @@
             <View
                 android:id="@+id/view"
                 android:layout_width="fill_parent"
-                android:layout_height="20dp"
-                android:background="@color/colorAyrac"
+                android:layout_height="10dp"
+                android:background="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

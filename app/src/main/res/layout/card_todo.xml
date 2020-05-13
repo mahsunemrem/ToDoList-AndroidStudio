@@ -7,10 +7,10 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView_todo"
-        app:cardBackgroundColor="@color/colorTodo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorTodo">
+        android:background="@color/colorTodo"
+        app:cardBackgroundColor="@color/colorWhite">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -19,20 +19,17 @@
 
             <TextView
                 android:id="@+id/textView_todo"
-                android:layout_width="93dp"
+                android:layout_width="250dp"
                 android:layout_height="30dp"
                 android:layout_marginStart="46dp"
                 android:layout_marginLeft="46dp"
                 android:layout_marginTop="26dp"
-                android:layout_marginEnd="207dp"
-                android:layout_marginRight="207dp"
                 android:layout_marginBottom="9dp"
                 android:fontFamily="@font/abhaya_libre_medium"
                 android:text="Yumurta"
                 android:textColor="#FC101010"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/view_barTodo"
-                app:layout_constraintEnd_toStartOf="@+id/checkBox_isDone"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,14 +46,13 @@
                 android:scaleX="2"
                 android:scaleY="2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textView_todo"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <View
                 android:id="@+id/view_barTodo"
                 android:layout_width="fill_parent"
-                android:layout_height="10dp"
-                android:background="@color/colorAyrac"
+                android:layout_height="4dp"
+                android:background="@color/colorPrimary"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />

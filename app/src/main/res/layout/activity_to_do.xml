@@ -37,7 +37,7 @@
         android:id="@+id/cardView_tagTodo"
         android:layout_width="410dp"
         android:layout_height="83dp"
-        app:cardBackgroundColor="@color/colorTag"
+        app:cardBackgroundColor="#BFEFAE0C"
         app:layout_constraintBottom_toTopOf="@+id/rv_todo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

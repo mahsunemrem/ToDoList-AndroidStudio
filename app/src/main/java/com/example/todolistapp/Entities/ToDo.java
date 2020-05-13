@@ -1,12 +1,19 @@
 package com.example.todolistapp.Entities;
 
 import com.example.todolistapp.Activity.TagActivity;
+import com.example.todolistapp.Core.PersistenceManager;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
-public class ToDo {
-
+@DatabaseTable(tableName = "ToDos")
+public class ToDo implements PersistenceManager.Modal {
+    @DatabaseField(generatedId = true ,allowGeneratedIdInsert=true )
     private int Id;
+    @DatabaseField
     private String TodoName;
+    @DatabaseField
     private boolean IsDone;
+    @DatabaseField
     private int TagId;
 
 

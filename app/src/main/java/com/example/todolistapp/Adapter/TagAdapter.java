@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.todolistapp.Activity.ToDoActivity;
+import com.example.todolistapp.Business.TagManager;
 import com.example.todolistapp.Entities.Tag;
 import com.example.todolistapp.R;
 
@@ -22,10 +23,11 @@ import java.util.ArrayList;
 public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagDesignHandler> {
     private Context mContext;
     private ArrayList<Tag> Tags;
-
+    private TagManager tagManager;
     public TagAdapter(Context mContext, ArrayList<Tag> tags) {
         this.mContext = mContext;
         this.Tags = tags;
+        tagManager=new TagManager( mContext );
     }
 
     @NonNull
@@ -50,7 +52,7 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagDesignHandler
 
 
                 Intent intent=new Intent(mContext, ToDoActivity.class);
-                //intent.putExtra("nesne", (Serializable) tag);
+                intent.putExtra("id", tag.getId());
                 mContext.startActivity(intent);
 
 
