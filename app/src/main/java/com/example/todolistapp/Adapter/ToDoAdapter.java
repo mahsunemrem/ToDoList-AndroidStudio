@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.example.todolistapp.Business.ToDoManager;
 import com.example.todolistapp.Entities.Tag;
 import com.example.todolistapp.Entities.ToDo;
 import com.example.todolistapp.R;
+import com.google.android.material.datepicker.MaterialDatePicker;
 
 import java.util.ArrayList;
 
@@ -63,6 +65,9 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.ToDoDesignHand
                 notifyDataSetChanged();
             }
         } );
+
+
+
 
 
     }

@@ -65,6 +65,7 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagDesignHandler
         holder.tagName.setText(tag.getTagName());
         holder.tagCard.setTag( tag.getId() );
         //holder.tagCard.setTag(0,tag.getTagName() );
+
         holder.tagCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +78,8 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagDesignHandler
 
             }
         });
+
+
 
         holder.tagCard.setOnLongClickListener( new View.OnLongClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
@@ -161,10 +164,10 @@ public class TagAdapter extends RecyclerView.Adapter<TagAdapter.TagDesignHandler
                     }
                 } );
 
-
                 return true;
             }
         } );
+
 
 /*
         holder.tagCard.setOnTouchListener( new View.OnTouchListener() {

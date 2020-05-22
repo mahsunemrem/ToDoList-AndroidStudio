@@ -37,4 +37,6 @@ dependencies {
     implementation 'com.j256.ormlite:ormlite-core:4.47'
     implementation 'com.j256.ormlite:ormlite-android:4.47'
 
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
+
 }
